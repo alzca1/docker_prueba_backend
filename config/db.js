@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const dbUrl = "mongodb://mongo:27017/alzca";
+export const dbUrl = "mongodb://127.0.0.1:27017/alzca";
 
-function connect () {
+export function connect() {
   mongoose
     .connect(dbUrl, {
       useNewUrlParser: true,
@@ -14,6 +14,4 @@ function connect () {
 
 // falta cerrar la conexión
 
-const close = () => mongoose.connection.close();
-
-module.exports = { dbUrl, connect, close };
+export const close = () => mongoose.connection.close();

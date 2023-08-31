@@ -1,10 +1,12 @@
-import * as db from "./config/db.js";
+import { dbUrl } from "./config/db.js";
 
-module.exports = {
+console.log(dbUrl);
+
+export const config = {
   mongodb: {
-    url: db.dbUrl,
+    url: dbUrl,
 
-    databaseName: "mongo",
+    databaseName: "alzca",
 
     options: {
       useNewUrlParser: true, // removes a deprecation warning when connecting
@@ -23,3 +25,5 @@ module.exports = {
   // The file extension to create migrations and search for in migration dir
   migrationFileExtension: ".js",
 };
+
+export default config;
