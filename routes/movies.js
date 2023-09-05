@@ -6,9 +6,11 @@ const moviesRouter = express.Router();
 moviesRouter.get("/", async (req, res, next) => {
   try {
     console.log(Movie);
-    const movies = await Movie.find({});
+    const movies = await Movie.find();
 
-    res.json(movies);
+    if (movies) {
+      res.status(200).send(movies);
+    }
   } catch (error) {
     res.status(500).send({ data: "There was an error." });
   }
@@ -17,8 +19,7 @@ moviesRouter.get("/", async (req, res, next) => {
 moviesRouter.post("/", async (req, res, next) => {
   try {
     console.log(req.body);
-
-    const saveMovie = new Movie({ ...req.body }).save();
+    const saveMovie = await new Movie({ ...req.body });
     if (saveMovie) {
       console.log(saveMovie);
       res.status(200).send(saveMovie);
